@@ -53,6 +53,14 @@ function update(dt){
     //Movement of the ball relative to time difference
     ball.pos.x += ball.vel.x * dt;
     ball.pos.y += ball.vel.y * dt;
+    
+    //Create bouncing of the ball by inverting the velocity on both x and y axis across the corners of the board
+    if(ball.pos.x < 0 || ball.pos.x > canvas.width){
+        ball.vel.x = -ball.vel.x;
+    }
+    if(ball.pos.y < 0 || ball.pos.y > canvas.width){
+        ball.vel.y = -ball.vel.y;
+    }
     //Create board stuff
     ctx.fillStyle = '#000';
     ctx.fillRect(0,0,canvas.width,canvas.height);
