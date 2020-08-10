@@ -14,6 +14,23 @@ class Rect
         this.pos = new Vec;
         this.size = new Vec(w,h);
     }
+    //Getting different sides of the ball to make more accessible when it comes down to calculating bounces across the x and y axis.
+    get left()
+    {
+        return this.pos.x - this.size.x / 2;
+    }
+    get right()
+    {
+        return this.pos.x + this.size.x / 2;
+    }
+    get top()
+    {
+        return this.pos.y - this.size.y / 2;
+    }
+    get bottom()
+    {
+        return this.pos.y + this.size.y / 2;
+    }
 }
 
 class Ball extends Rect
@@ -33,8 +50,8 @@ const ball = new Ball;
 console.log(ball);
 ball.pos.x = 100;
 ball.pos.y = 50
-ball.vel.x = 100;
-ball.vel.y = 100;
+ball.vel.x = 900;
+ball.vel.y = 800;
 //Creating animation update for the page
 let lastUpdate;
 
@@ -55,10 +72,10 @@ function update(dt){
     ball.pos.y += ball.vel.y * dt;
     
     //Create bouncing of the ball by inverting the velocity on both x and y axis across the corners of the board
-    if(ball.pos.x < 0 || ball.pos.x > canvas.width){
+    if(ball.left < 0 || ball.right > canvas.width){
         ball.vel.x = -ball.vel.x;
     }
-    if(ball.pos.y < 0 || ball.pos.y > canvas.width){
+    if(ball.top < 0 || ball.bottom > canvas.height){
         ball.vel.y = -ball.vel.y;
     }
     //Create board stuff
