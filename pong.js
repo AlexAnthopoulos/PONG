@@ -49,7 +49,6 @@ class Pong
         this._canvas = canvas;
         this._ctx = canvas.getContext('2d');
         this.ball = new Ball;
-        console.log(ball);
         this.ball.pos.x = 100;
         this.ball.pos.y = 50
         this.ball.vel.x = 900;
@@ -57,15 +56,15 @@ class Pong
         //Creating animation update for the page
         let lastUpdate;
 
-        function callback(milliseconds) {
+        const callback = (milliseconds) => {
             if(lastUpdate) {
                 //Update in seconds for easier changes
-                update((milliseconds - lastUpdate)/1000);
+                this.update((milliseconds - lastUpdate)/1000);
             }
             //Doing this so we add on the animation frame the callback
             lastUpdate = milliseconds;
             requestAnimationFrame(callback);
-        }
+        };
             callback();
     }
     update(dt){
@@ -88,10 +87,10 @@ class Pong
         this._ctx.fillRect(this.ball.pos.x, this.ball.pos.y, this.ball.size.x, this.ball.size.y);
     }
 }
+
 //Draw main gaming area and get canvas elements
 const canvas = document.getElementById('pong');
 const pong = new Pong(canvas);
-
 
 
 
