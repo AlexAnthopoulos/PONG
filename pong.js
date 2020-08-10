@@ -32,6 +32,8 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 
 const ball = new Ball;
 console.log(ball);
+ball.pos.x = 100;
+ball.pos.y = 50
 //Create the ball
 ctx.fillStyle = '#fff';
-ctx.fillRect(0,0,10,10);
+ctx.fillRect(ball.pos.x, ball.pos.y, ball.size.x, ball.size.y);
