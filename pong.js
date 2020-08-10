@@ -67,6 +67,20 @@ class Pong
         };
             callback();
     }
+    draw()
+    {
+         //Create board stuff
+         this._ctx.fillStyle = '#000';
+         this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
+         //call the ball creation
+         this.drawRect(this.ball);
+    }
+    drawRect(rect) 
+    {
+          //Create the ball
+          this._ctx.fillStyle = '#fff';
+          this._ctx.fillRect(rect.pos.x, rect.pos.y, rect.size.x, rect.size.y);
+    }
     update(dt){
         //Movement of the ball relative to time difference
         this.ball.pos.x += this.ball.vel.x * dt;
@@ -79,12 +93,7 @@ class Pong
         if(this.ball.top < 0 || this.ball.bottom > this._canvas.height){
             this.ball.vel.y = -this.ball.vel.y;
         }
-        //Create board stuff
-        this._ctx.fillStyle = '#000';
-        this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
-        //Create the ball
-        this._ctx.fillStyle = '#fff';
-        this._ctx.fillRect(this.ball.pos.x, this.ball.pos.y, this.ball.size.x, this.ball.size.y);
+           this.draw();
     }
 }
 
