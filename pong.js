@@ -7,6 +7,14 @@ class Vec
     }
 }
 
+class Rect
+{
+    constructor(w,h)
+    {
+        this.pos = new Vec;
+        this.size = new Vec;
+    }
+}
 
 //Draw main gaming area and get canvas elements
 const canvas = document.getElementById('pong');
