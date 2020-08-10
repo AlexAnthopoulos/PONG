@@ -1,3 +1,13 @@
+class Vec
+{
+    constructor(x = 0 , y = 0)
+    {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+
 //Draw main gaming area and get canvas elements
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
