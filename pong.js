@@ -12,7 +12,7 @@ class Rect
     constructor(w,h)
     {
         this.pos = new Vec;
-        this.size = new Vec;
+        this.size = new Vec(w,h);
     }
 }
 
