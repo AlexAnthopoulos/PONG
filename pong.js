@@ -33,6 +33,20 @@ const ball = new Ball;
 console.log(ball);
 ball.pos.x = 100;
 ball.pos.y = 50
+ball.vel.x = 100;
+ball.vel.y = 100;
+//Creating animation update for the page
+let lastUpdate;
+
+function callback(milliseconds) {
+    if(lastUpdate) {
+        //Update in seconds for easier changes
+        update((milliseconds - lastUpdate)/1000);
+    }
+    //Doing this so we add on the animation frame the callback
+    lastUpdate = milliseconds;
+    requestAnimationFrame(callback);
+}
 
 //Updating ball position
 function update(dt){
@@ -47,3 +61,4 @@ function update(dt){
     ctx.fillRect(ball.pos.x, ball.pos.y, ball.size.x, ball.size.y);
 }
 
+callback();
