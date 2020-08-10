@@ -33,6 +33,15 @@ class Rect
     }
 }
 
+class Player extends Rect
+{
+    constructor()
+    {
+        super(20,100);
+        this.score = 0;
+    }
+}
+
 class Ball extends Rect
 {
     constructor()
@@ -53,6 +62,15 @@ class Pong
         this.ball.pos.y = 50
         this.ball.vel.x = 900;
         this.ball.vel.y = 800;
+        this.players = [
+            new Player,
+            new Player,
+        ];
+        this.players[0].pos.x = 40;
+        this.players[1].pos.x = this._canvas.width - 40;
+        this.players.forEach(player => {
+            player.pos.y = this._canvas.height /2 ;
+        })
         //Creating animation update for the page
         let lastUpdate;
 
@@ -74,12 +92,13 @@ class Pong
          this._ctx.fillRect(0,0,this._canvas.width,this._canvas.height);
          //call the ball creation
          this.drawRect(this.ball);
+         this.players.forEach(player => this.drawRect(player));
     }
     drawRect(rect) 
     {
           //Create the ball
           this._ctx.fillStyle = '#fff';
-          this._ctx.fillRect(rect.pos.x, rect.pos.y, rect.size.x, rect.size.y);
+          this._ctx.fillRect(rect.left, rect.top, rect.size.x, rect.size.y);
     }
     update(dt){
         //Movement of the ball relative to time difference
