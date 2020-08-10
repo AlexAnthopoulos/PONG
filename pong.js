@@ -27,13 +27,23 @@ class Ball extends Rect
 //Draw main gaming area and get canvas elements
 const canvas = document.getElementById('pong');
 const ctx = canvas.getContext('2d');
-ctx.fillStyle = '#000';
-ctx.fillRect(0,0,canvas.width,canvas.height);
+
 
 const ball = new Ball;
 console.log(ball);
 ball.pos.x = 100;
 ball.pos.y = 50
-//Create the ball
-ctx.fillStyle = '#fff';
-ctx.fillRect(ball.pos.x, ball.pos.y, ball.size.x, ball.size.y);
+
+//Updating ball position
+function update(dt){
+    //Movement of the ball relative to time difference
+    ball.pos.x += ball.vel.x * dt;
+    ball.pos.y += ball.vel.y * dt;
+    //Create board stuff
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    //Create the ball
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(ball.pos.x, ball.pos.y, ball.size.x, ball.size.y);
+}
+
