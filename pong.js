@@ -149,6 +149,7 @@ class Pong
          //call the ball creation
          this.drawRect(this.ball);
          this.players.forEach(player => this.drawRect(player));
+         this.drawScore();
     }
     drawRect(rect) 
     {
@@ -165,7 +166,14 @@ class Pong
         this.players.forEach((player, index) => {
             //Make the number a string and then split it as want it as an array 
             const chars = player.score.toString().split('');
-        })
+            //Creating an offset from X. Multiple sources have contributed for this such as StackOverflock,Discord Channels(Programmers Hangout,SpeakJS) and checking
+            //projects and tutorials online over offsetting array of digits for scoring.
+            const offset = alignment * (index + 1) -(CHAR_Width * chars.length / 2) * this.CHAR_PIXEL / 2;
+            chars.forEach((char, pos) => {
+                //Paint on the canvas according to Chars provided earlier. We use the ''pipe'' Byte operator to floor and type it into integer
+                this._ctx.drawImage(this.CHARS[char|0], offset + pos * CHAR_Width);
+            });
+        });
     }
     reset()
     {
