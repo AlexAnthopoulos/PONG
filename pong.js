@@ -114,7 +114,15 @@ class Pong
                 canvas.width = this.CHAR_PIXEL * 3;
                 const ctx = canvas.getContext('2d');
                 ctx.fillStyle = `#fff`;
-            })
+                //Entering the loop. We will split into strings everything and then every time 1 appears paint white
+                str.split('').forEach((fill, i) => {
+                    if (fill === '1') {
+                        //Every ''pixel line we got is 3 pixels wide
+                        ctx.fillRect((i % 3) * this.CHAR_PIXEL,(i / 3 | 0) * this.CHAR_PIXEL, this.CHAR_PIXEL,this.CHAR_PIXEL);
+                    }
+                });
+                return canvas
+            });
             this.reset();
     }
     collision(player,ball)
