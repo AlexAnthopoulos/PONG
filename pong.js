@@ -92,17 +92,36 @@ class Pong
             requestAnimationFrame(callback);
         };
             callback();
+            // Important to visualize.Numbers are split in 0 and 1. O on the board being black, one being white space. Will do an array as array's are 0 based and go from there as we 
+            // will eventually loop inside it for the numbers to appear. The aim is to ''cache'' canvasses in the beginning of the game and take it from there.
+            // 0 to 7
+            this.CHARS = [
+                '111101101101111',
+                '010010010010010',
+                '111001111100111',
+                '111001111001111',
+                '101101111001001',
+                '111100111001111',
+                '111100111101111',
+                '111001001001001',
+                '111101111101111',
+                '111101111001111',
+            ];
             this.reset();
     }
     collision(player,ball)
     {
         if(player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top) {
             //Aim for randomness as well on y axis
+            //Saving current ball velocity
             const len = ball.vel.len;
+            //Negate the vertical ball velocity
             ball.vel.x = -ball.vel.x;
             //Adding here the effect of ball collision. The more times the ball hits the faster it becomes
+            //Replace the length but increase by 5%
             ball.vel.len = len * 1.05;
             //Randomness of ball on y axis
+            //Fudging velocity
             ball.vel.y  +=400 * (Math.random() - .5);
         }
     }
