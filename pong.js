@@ -114,8 +114,9 @@ class Pong
     start()
     {
         if (this.ball.vel.x === 0 && this.ball.vel.y === 0) {
-            this.ball.vel.x = 800;
-            this.ball.vel.y = 500;
+            //Ball always starts on same player so randomizing positions and start values so it is random where ball goes
+            this.ball.vel.x = 800 * (Math.random() > .5 ? 1 : -1);
+            this.ball.vel.y = 500 * (Math.random() * 2 - 1)
         }
     }
     update(dt){
