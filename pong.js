@@ -156,6 +156,17 @@ class Pong
           this._ctx.fillStyle = '#fff';
           this._ctx.fillRect(rect.left, rect.top, rect.size.x, rect.size.y);
     }
+    drawScore()
+    { // I will divide the whole canvas into 3 equal squares and put the score in the middle one
+        const alignment = this._canvas.width / 3;
+        // Here I will create the drawing but first will make the width. As we know the pixel of each number is 3 so will give an extra space for padding.
+        const CHAR_Width = this.CHAR_PIXEL * 4;
+        //Loop through each player and convert the score into characters.
+        this.players.forEach((player, index) => {
+            //Make the number a string and then split it as want it as an array 
+            const chars = player.score.toString().split('');
+        })
+    }
     reset()
     {
         this.ball.pos.x = this._canvas.width / 2;
