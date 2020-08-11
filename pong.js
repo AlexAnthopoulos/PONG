@@ -5,6 +5,17 @@ class Vec
         this.x = x;
         this.y = y;
     }
+    //As we want to improve velocity we are going to find the hypothenus of the virtual triangle.
+    get len()
+    {
+        return Math.sqrt(this.x * this.x + this.y * this.y) ;
+    }
+    set len(value)
+    {
+        const fact = value / this.len;
+        this.x *= fact;
+        this.y *= fact;
+    }
 }
 
 class Rect
@@ -116,7 +127,9 @@ class Pong
         if (this.ball.vel.x === 0 && this.ball.vel.y === 0) {
             //Ball always starts on same player so randomizing positions and start values so it is random where ball goes
             this.ball.vel.x = 800 * (Math.random() > .5 ? 1 : -1);
-            this.ball.vel.y = 500 * (Math.random() * 2 - 1)
+            this.ball.vel.y = 500 * (Math.random() * 2  -1)
+            //Ball speed
+            this.ball.vel.len = 900;
         }
     }
     update(dt){
