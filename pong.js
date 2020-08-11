@@ -58,10 +58,7 @@ class Pong
         this._canvas = canvas;
         this._ctx = canvas.getContext('2d');
         this.ball = new Ball;
-        this.ball.pos.x = 100;
-        this.ball.pos.y = 50
-        this.ball.vel.x = 900;
-        this.ball.vel.y = 800;
+        
         this.players = [
             new Player,
             new Player,
@@ -84,6 +81,7 @@ class Pong
             requestAnimationFrame(callback);
         };
             callback();
+            this.reset();
     }
     collision(player,ball)
     {
@@ -106,6 +104,13 @@ class Pong
           this._ctx.fillStyle = '#fff';
           this._ctx.fillRect(rect.left, rect.top, rect.size.x, rect.size.y);
     }
+    reset()
+    {
+        this.ball.pos.x = 100;
+        this.ball.pos.y = 50
+        this.ball.vel.x = 900;
+        this.ball.vel.y = 800;
+    }
     update(dt){
         //Movement of the ball relative to time difference
         this.ball.pos.x += this.ball.vel.x * dt;
@@ -115,6 +120,8 @@ class Pong
         if(this.ball.left < 0 || this.ball.right > this._canvas.width){
             //First iteration of somehow scoring. I am using a bitwise operate to force numeric value
             const playerId = this.ball.vel.x < 0 | 0;
+            this.players[playerId].score++
+            this.reset();
             console.log(playerId)
             /* Another version of writing the above can also be the following :
             let playerId;
