@@ -19,6 +19,7 @@ const config = {
 const game = new Phaser.Game(config);
 let ball;
 let player1;
+let player2;
 
 function preload() {
     this.load.image(`ball`,`../assets/ball.png`);
