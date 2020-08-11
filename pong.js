@@ -171,7 +171,7 @@ class Pong
             const offset = alignment * (index + 1) -(CHAR_Width * chars.length / 2) * this.CHAR_PIXEL / 2;
             chars.forEach((char, pos) => {
                 //Paint on the canvas according to Chars provided earlier. We use the ''pipe'' Byte operator to floor and type it into integer
-                this._ctx.drawImage(this.CHARS[char|0], offset + pos * CHAR_Width);
+                this._ctx.drawImage(this.CHARS[char|0], offset + pos * CHAR_Width,20);
             });
         });
     }
