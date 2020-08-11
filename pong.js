@@ -93,8 +93,10 @@ class Pong
         };
             callback();
             // Important to visualize.Numbers are split in 0 and 1. O on the board being black, one being white space. Will do an array as array's are 0 based and go from there as we 
-            // will eventually loop inside it for the numbers to appear. The aim is to ''cache'' canvasses in the beginning of the game and take it from there.
+            // will eventually loop inside it for the numbers to appear. The aim is to ''cache'' canvasses in the beginning of the game and take it from there. We are going to split
+            //the strings of the array and for each one of the we will eventually paint white.
             // 0 to 7
+            this.CHAR_PIXEL = 10;
             this.CHARS = [
                 '111101101101111',
                 '010010010010010',
@@ -106,7 +108,13 @@ class Pong
                 '111001001001001',
                 '111101111101111',
                 '111101111001111',
-            ];
+            ].map(str => {
+                const canvas = document.createElement('canvas');
+                canvas.height = this.CHAR_PIXEL * 5;
+                canvas.width = this.CHAR_PIXEL * 3;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = `#fff`;
+            })
             this.reset();
     }
     collision(player,ball)
