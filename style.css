@@ -1,0 +1,9 @@
+canvas {
+    border: solid 1px #fff;
+    border-left: none;
+    border-right: none;
+}
+
+body {
+    background-image: url('aztec-test.jpg');
+}
