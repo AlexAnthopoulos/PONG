@@ -113,7 +113,17 @@ class Pong
         
         //Create bouncing of the ball by inverting the velocity on both x and y axis across the corners of the board
         if(this.ball.left < 0 || this.ball.right > this._canvas.width){
-            this.ball.vel.x = -this.ball.vel.x;
+            //First iteration of somehow scoring. I am using a bitwise operate to force numeric value
+            const playerId = this.ball.vel.x < 0 | 0;
+            console.log(playerId)
+            /* Another version of writing the above can also be the following :
+            let playerId;
+            if(this.ball.vel.x < 0) {
+                playerId = 1;
+            } else {
+                playerId = 0;
+            }
+            console.log(playerId); */
         }
         if(this.ball.top < 0 || this.ball.bottom > this._canvas.height){
             this.ball.vel.y = -this.ball.vel.y;
