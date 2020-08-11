@@ -45,5 +45,8 @@ function create(){
 }
 
 function update(){
-
+    const initialVelocityX =800;
+    const initialVelocityY = 100;
+    ball.setVelocityX(initialVelocityX);
+    ball.setVelocityY(initialVelocityY);
 }
