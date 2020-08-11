@@ -97,8 +97,13 @@ class Pong
     collision(player,ball)
     {
         if(player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top) {
+            //Aim for randomness as well on y axis
+            const len = ball.vel.len;
             ball.vel.x = -ball.vel.x;
-            ball.vel.len *= 1.05;
+            //Adding here the effect of ball collision. The more times the ball hits the faster it becomes
+            ball.vel.len = len * 1.05;
+            //Randomness of ball on y axis
+            ball.vel.y  +=400 * (Math.random() - .5);
         }
     }
     draw()
