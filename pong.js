@@ -168,7 +168,7 @@ class Pong
             const chars = player.score.toString().split('');
             //Creating an offset from X. Multiple sources have contributed for this such as StackOverflock,Discord Channels(Programmers Hangout,SpeakJS) and checking
             //projects and tutorials online over offsetting array of digits for scoring.
-            const offset = alignment * (index + 1) -(CHAR_Width * chars.length / 2) * this.CHAR_PIXEL / 2;
+            const offset = alignment * (index + 1) -(CHAR_Width * chars.length / 2) + this.CHAR_PIXEL / 2;
             chars.forEach((char, pos) => {
                 //Paint on the canvas according to Chars provided earlier. We use the ''pipe'' Byte operator to floor and type it into integer
                 this._ctx.drawImage(this.CHARS[char|0], offset + pos * CHAR_Width,20);
