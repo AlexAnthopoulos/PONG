@@ -85,6 +85,12 @@ class Pong
         };
             callback();
     }
+    collision(player,ball)
+    {
+        if(player.left < ball.right && player.right > ball.left && player.top < ball.bottom && player.bottom > ball.top) {
+            ball.vel.x = -ball.vel.x;
+        }
+    }
     draw()
     {
          //Create board stuff
@@ -114,6 +120,8 @@ class Pong
         }
            //Player 2 always follow the ball
            this.players[1].pos.y = this.ball.pos.y
+           //Update collision here for players
+            this.players.forEach(player => this.collision(player,this.ball));
            this.draw();
     }
 }
