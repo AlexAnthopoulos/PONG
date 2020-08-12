@@ -1,15 +1,9 @@
 body {
     background-color: black;
+    
 }
 
 canvas {
     border: 4px solid white;
 }
 
- #logo{
-    background-image: url("assets/logo.png");
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
-}
